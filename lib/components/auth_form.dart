@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:chat/components/user_image_picker.dart';
-import 'package:chat/models/auth_form_data.dart';
+import 'package:chat/core/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
@@ -22,21 +22,10 @@ class _AuthFormState extends State<AuthForm> {
   }
 
   void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('An error occurred!'),
-        content: Text(message),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(ctx).pop();
-            },
-            child: const Text('Okay'),
-          )
-        ],
-      ),
-    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Theme.of(context).colorScheme.error,
+    ));
   }
 
   void _submit() {
@@ -45,7 +34,7 @@ class _AuthFormState extends State<AuthForm> {
       return;
     }
     if (_formData.image == null && _formData.isSignup) {
-      return _showErrorDialog('Please pick an image');
+      return _showErrorDialog('Please pick an image!');
     }
 
     widget.onSubmit(_formData);
