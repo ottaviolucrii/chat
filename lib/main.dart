@@ -1,3 +1,4 @@
+import 'package:chat/pages/auth_or_app_page.dart';
 import 'package:chat/pages/auth_page.dart';
 import 'package:flutter/material.dart'; // Add this line to import DefaultFirebaseOptions
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue[900]!),
         useMaterial3: true,
       ),
-      home: AuthPage(),
+      home: AuthOrAppPage(),
       debugShowCheckedModeBanner: false,
     );
   }
