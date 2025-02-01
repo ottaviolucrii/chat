@@ -28,7 +28,7 @@ class ChatPage extends StatelessWidget {
                 value: 'logout',
                 child: Row(
                   children: <Widget>[
-                    Icon(Icons.exit_to_app),
+                    Icon(Icons.exit_to_app, color: Colors.black),
                     SizedBox(width: 8),
                     Text('Logout'),
                   ],

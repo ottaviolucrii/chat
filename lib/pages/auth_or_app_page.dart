@@ -13,16 +13,12 @@ class AuthOrAppPage extends StatelessWidget {
     return Scaffold(
       body: StreamBuilder<ChatUser?>(
         stream: AuthService().userChanges,
-        builder: (context, snapshot) {
+        builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const LoadingPage();
+          } else {
+            return snapshot.hasData ? const ChatPage() : const AuthPage();
           }
-
-          if (snapshot.hasData) {
-            return const ChatPage();
-          }
-
-          return const AuthPage();
         },
       ),
     );
